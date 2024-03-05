@@ -32,24 +32,74 @@ public class Practica1 {
 //        System.out.println("Se guardo con el id:" + ven.getIdVenta());
 
 
-        //Actualizar
-        SessionFactory sf = HibernateUtil.getSessionFactory();
-        Session session = sf.getCurrentSession();
-        DAOVenta dven = new DAOVenta();
 
-        long id = 1; 
-        Venta ven = dven.findById(id);
+
+        //Actualizar
+//        DAOVenta dven = new DAOVenta();
+//        long id = 3; 
+//        Venta ven = dven.findById(id);
+//        if (ven != null) {
+//            ven.setCliente("Erick");
+//            ven.setFechaventa(new java.sql.Date(new Date().getTime()));
+//            ven.setTotal(200);
+//            dven.actualizar(ven);
+//            System.out.println("Exito");
+//        } else {
+//            System.out.println("Error");
+//        }
+
+
+
+
+        //Borrar
+        DAOVenta dao = new DAOVenta();
+        long id = 2;
+        Venta ven = dao.findById(id);
 
         if (ven != null) {
-            ven.setCliente("Salvador");
-            ven.setFechaventa(new java.sql.Date(new Date().getTime()));
-            ven.setTotal(2000);
-            dven.actualizar(ven);
-            System.out.println("Exito");
+            dao.eliminar(ven);
+            System.out.println("Eliminado");
 
         } else {
             System.out.println("Error");
         }
+
+
+
+
+          //FindById
+//          DAOVenta dao=new DAOVenta();
+//          long id = 3;
+//          Venta ven=dao.findById(id);
+//          if(ven !=null){
+//            System.out.println("Id: " + ven.getIdVenta());
+//            System.out.println("Cliente: " + ven.getCliente());
+//            System.out.println("Fecha: " + ven.getFechaventa());
+//            System.out.println("Total: " + ven.getTotal());
+//              
+//          }else{
+//              System.out.println("No se encontro");
+//          }
+          
+          
+          
+          //FindAll
+//          DAOVenta dao=new DAOVenta();
+//          List<Venta> ventas=dao.findAll();
+//           if (!ventas.isEmpty()) {
+//            System.out.println("Ventas:");
+//            for (Venta venta : ventas) {
+//                System.out.println("ID: " + venta.getIdVenta());
+//                System.out.println("Cliente: " + venta.getCliente());
+//                System.out.println("Fecha: " + venta.getFechaventa());
+//                System.out.println("Total: " + venta.getTotal());
+//                System.out.println("--------------------");
+//            }
+//        } else {
+//            System.out.println("Error");
+        }
+          
+        
 
     }
 
