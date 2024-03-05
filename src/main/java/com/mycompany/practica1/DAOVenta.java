@@ -23,7 +23,7 @@ public class DAOVenta implements IDao<Venta> {
     }
 
     @Override
-     public boolean actualizar(Venta p) {
+    public boolean actualizar(Venta p) {
         try (Session session = HibernateUtil.getSessionFactory().getCurrentSession()) {
             session.beginTransaction();
             session.update(p);
@@ -61,13 +61,14 @@ public class DAOVenta implements IDao<Venta> {
         }
     }
 
-
     @Override
     public List<Venta> findAll() {
-          SessionFactory sf = HibernateUtil.getSessionFactory();
+        SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = sf.getCurrentSession();
         Transaction tran = session.beginTransaction();
-        return session.createQuery("FROM Venta", Venta.class).list();
+        List<Venta> ventas = session.createQuery("FROM Venta", Venta.class).list();
+        tran.commit();
+        return ventas;
     }
 
 }
