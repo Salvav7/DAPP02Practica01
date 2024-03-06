@@ -28,7 +28,6 @@ public class DAOVenta implements IDao<Venta> {
             session.beginTransaction();
             session.update(p);
             session.getTransaction().commit();
-            System.out.println("Actualizado");
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -44,7 +43,6 @@ public class DAOVenta implements IDao<Venta> {
         session.delete(p);
 
         tran.commit();
-        System.out.println("Eliminado");
         return true;
     }
 

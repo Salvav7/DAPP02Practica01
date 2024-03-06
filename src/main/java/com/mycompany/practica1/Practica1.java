@@ -15,12 +15,12 @@ public class Practica1 {
 
         do {
             System.out.println("Seleccione una opción:");
-            System.out.println("1. Guardar");
-            System.out.println("2. Actualizar");
-            System.out.println("3. Eliminar");
-            System.out.println("4. Buscar Id");
-            System.out.println("5. Buscar todo");
-            System.out.println("0. Salir");
+            System.out.println("1 Nueva");
+            System.out.println("2 Actualizar");
+            System.out.println("3 Eliminar");
+            System.out.println("4 Buscar Id");
+            System.out.println("5 Buscar todo");
+            System.out.println("0 Salir");
 
             opcion = scanner.nextInt();
             scanner.nextLine();
@@ -48,7 +48,8 @@ public class Practica1 {
     }
 
     private static void guardarVenta(Scanner scanner, DAOVenta dao) {
-        System.out.println("Nueva Venta:");
+        System.out.println("Nueva Venta");
+        System.out.println("");
         System.out.print("Cliente: ");
         String cliente = scanner.nextLine();
         System.out.print("Total: ");
@@ -86,12 +87,12 @@ public class Practica1 {
     }
 
     private static void actualizarVenta(Scanner scanner, DAOVenta dao) {
-        System.out.print("Ingrese el ID de la venta que desea actualizar: ");
+        System.out.print("Ingrese el Id");
         long idVenta = scanner.nextLong();
         scanner.nextLine();
         Venta venta = dao.findById(idVenta);
         if (venta == null) {
-            System.out.println("No se encontró una venta con ese ID.");
+            System.out.println("No se encontró");
             return;
         }
         System.out.print("Cliente: ");
@@ -107,13 +108,13 @@ public class Practica1 {
     }
 
     private static void eliminarVenta(Scanner scanner, DAOVenta dao) {
-        System.out.print("Ingrese el ID de la venta que desea eliminar: ");
+        System.out.print("Ingrese el Id a eliminar");
         long idVenta = scanner.nextLong();
         scanner.nextLine();
 
         Venta venta = dao.findById(idVenta);
         if (venta == null) {
-            System.out.println("No se encontró una venta con ese ID.");
+            System.out.println("No se encontró");
             return;
         }
 
@@ -122,7 +123,7 @@ public class Practica1 {
     }
 
     private static void buscarVentaPorId(Scanner scanner, DAOVenta dao) {
-    System.out.print("Ingrese el ID de la venta que desea buscar: ");
+    System.out.print("Ingrese el Id a buscar");
     long idVenta = scanner.nextLong();
     Venta venta = dao.findById(idVenta);
 
@@ -144,7 +145,7 @@ public class Practica1 {
             }
         } 
     } else {
-        System.out.println("No se encontró una venta con ese ID.");
+        System.out.println("No se encontró");
     }
 }
 
