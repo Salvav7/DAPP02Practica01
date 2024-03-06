@@ -122,20 +122,31 @@ public class Practica1 {
     }
 
     private static void buscarVentaPorId(Scanner scanner, DAOVenta dao) {
-        System.out.println("Ingrese el ID de la venta:");
-        long id = scanner.nextLong();
-        scanner.nextLine();
+    System.out.print("Ingrese el ID de la venta que desea buscar: ");
+    long idVenta = scanner.nextLong();
+    Venta venta = dao.findById(idVenta);
 
-        Venta venta = dao.findById(id);
-        if (venta != null) {
-            System.out.println("ID: " + venta.getIdVenta());
-            System.out.println("Cliente: " + venta.getCliente());
-            System.out.println("Fecha: " + venta.getFechaventa());
-            System.out.println("Total: " + venta.getTotal());
-        } else {
-            System.out.println("No se encontró ninguna venta con ese ID.");
-        }
+    if (venta != null) {
+        System.out.println("Venta encontrada:");
+        System.out.println("ID: " + venta.getIdVenta());
+        System.out.println("Cliente: " + venta.getCliente());
+        System.out.println("Fecha: " + venta.getFechaventa());
+        System.out.println("Total: " + venta.getTotal());
+
+        List<DetalleVenta> detalles = venta.getDetalleventa();
+        if (!detalles.isEmpty()) {
+            System.out.println("Detalles de la venta:");
+            for (DetalleVenta detalle : detalles) {
+                System.out.println("   ID Detalle: " + detalle.getId());
+                System.out.println("   Producto: " + detalle.getProducto());
+                System.out.println("   Cantidad: " + detalle.getCantidad());
+                System.out.println("   Precio: " + detalle.getPrecio());
+            }
+        } 
+    } else {
+        System.out.println("No se encontró una venta con ese ID.");
     }
+}
 
     private static void mostrarTodasLasVentas(DAOVenta dao) {
         List<Venta> ventas = dao.findAll();
